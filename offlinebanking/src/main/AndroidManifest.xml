@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    package="com.ekenya.rnd.offlinebanking">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <dist:module
+        dist:instant="false"
+        dist:title="@string/title_offline_banking">
+        <dist:delivery>
+            <dist:install-time />
+        </dist:delivery>
+        <dist:fusing dist:include="true" />
+    </dist:module>
+
+    <application>
+        <activity
+            android:name="com.ekenya.rnd.offlinebanking.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.OfflineBanking"></activity>
+    </application>
+</manifest>

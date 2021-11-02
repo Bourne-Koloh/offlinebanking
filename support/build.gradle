@@ -1,0 +1,75 @@
+plugins {
+    id 'com.android.dynamic-feature'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.kapt'
+}
+android {
+    compileSdk 30
+
+    defaultConfig {
+        minSdk 21
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation project(":app")
+    //Shared Library
+    implementation  project(":common")
+    //
+    implementation 'androidx.core:core-ktx:'+ rootProject.kotlinCoreVersion
+    //
+    implementation 'androidx.recyclerview:recyclerview:' + rootProject.recyclerViewVersion
+    //
+    implementation 'androidx.navigation:navigation-fragment:'+ rootProject.navigationUIVersion
+    implementation 'androidx.navigation:navigation-ui:'+ rootProject.navigationUIVersion
+    implementation 'androidx.navigation:navigation-fragment-ktx:'+ rootProject.navigationUIVersion
+    implementation 'androidx.navigation:navigation-ui-ktx:'+ rootProject.navigationUIVersion
+    //
+    implementation 'androidx.appcompat:appcompat:' + rootProject.supportLibVersion
+    implementation 'com.google.android.material:material:' + rootProject.materialVersion
+    implementation 'androidx.constraintlayout:constraintlayout:'+rootProject.constraintLayoutVersion
+    //
+    implementation 'androidx.lifecycle:lifecycle-extensions:'+ rootProject.archLifecycleVersion
+    //
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:'+ rootProject.kotlinLifedataVersion
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:'+ rootProject.kotlinLifedataVersion
+    //
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:' + rootProject.testVersion
+    androidTestImplementation 'androidx.test:rules:' + rootProject.testVersion
+    androidTestImplementation 'androidx.test.espresso:espresso-core:' + rootProject.espressoVersion
+
+    //Java
+    annotationProcessor "com.google.dagger:dagger-android-processor:" + rootProject.googleDaggerVersion
+    annotationProcessor "com.google.dagger:dagger-compiler:" + rootProject.googleDaggerVersion
+    //Kotlin
+    kapt 'com.google.dagger:dagger-compiler:' + rootProject.googleDaggerVersion
+    kapt 'com.google.dagger:dagger-android-processor:' + rootProject.googleDaggerVersion
+
+    //Encryption Lib
+//    debugImplementation 'com.ekenya.android.encryptionlib.debug:encryptionlib:'+rootProject.ekenyeEntryptionLibVersion
+//    releaseImplementation'com.ekenya.android:encryptionlib:'+rootProject.ekenyeEntryptionLibVersion
+//    //Validations Lib
+//    debugImplementation 'co.ke.ekenya.lib.validationslib.debug:validationslib:'+rootProject.ekenyaValidationsLibVersion
+//    releaseImplementation 'co.ke.ekenya.lib.validationslib:validationslib:'+rootProject.ekenyaValidationsLibVersion
+//    //Networking Lib
+//    debugImplementation 'co.ke.ekenya.networkLib.networklib.debug:networklib:'+rootProject.ekenyaNetworkLibVersion
+//    releaseImplementation 'co.ke.ekenya.networkLib.networklib:networklib:'+rootProject.ekenyaNetworkLibVersion
+//    //Data Repo Lib
+//    debugImplementation'devops.mobile.datarepolib.debug:datarepolib:'+rootProject.ekenyaDataRepoLibVersion
+//    releaseImplementation 'devops.mobile.datarepolib:datarepolib:'+rootProject.ekenyaDataRepoLibVersion
+//    //Logging Lib
+//    debugImplementation 'ekenya.rnd.logginglibraryImp.logginglib.debug:logginglib:'+rootProject.ekenyaLoggingLibVersion
+//    releaseImplementation 'ekenya.rnd.logginglibraryImp.logginglib:logginglib:'+rootProject.ekenyaLoggingLibVersion
+}

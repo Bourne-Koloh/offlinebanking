@@ -1,0 +1,28 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+    plugins {
+        id 'com.android.application' version '7.1.0-alpha11'
+        id 'com.android.library' version '7.1.0-alpha11'
+        id 'org.jetbrains.kotlin.android' version '1.5.20'
+        id 'org.jetbrains.kotlin.kapt' version '1.6.0-RC'
+        id 'com.android.dynamic-feature' version '7.1.0-alpha11'
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "Offline Banking(Ethereum)"
+include ':app'
+include ':common'
+include ':offlinebanking'
+include ':offlinebanking:ethdroid'
+include ':support'

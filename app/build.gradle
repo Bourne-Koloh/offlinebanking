@@ -1,0 +1,88 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.kapt'
+}
+
+android {
+    compileSdk 30
+
+    defaultConfig {
+        applicationId "com.ekenya.rnd.baseapp"
+        minSdk 21
+        targetSdk 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    dynamicFeatures = [':offlinebanking', ':support']
+}
+
+dependencies {
+
+    //Shared Library
+    implementation  project(":common")
+
+    implementation 'androidx.core:core-ktx:1.5.0'
+    implementation 'androidx.recyclerview:recyclerview:' + rootProject.recyclerViewVersion
+    implementation 'androidx.navigation:navigation-fragment:'+ rootProject.navigationUIVersion
+    implementation 'androidx.navigation:navigation-ui:'+ rootProject.navigationUIVersion
+    implementation 'androidx.appcompat:appcompat:' + rootProject.supportLibVersion
+    implementation 'com.google.android.material:material:' + rootProject.materialVersion
+    implementation 'androidx.constraintlayout:constraintlayout:'+rootProject.constraintLayoutVersion
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:' + rootProject.testVersion
+    androidTestImplementation 'androidx.test:rules:' + rootProject.testVersion
+    androidTestImplementation 'androidx.test.espresso:espresso-core:' + rootProject.espressoVersion
+
+    //Splittable/Dynamic apps support library
+    // This dependency is downloaded from the Google’s Maven repository.
+    // So, make sure you also include that repository in your project's build.gradle file.
+    //api 'com.google.android.play:core:' + rootProject.googlePlayCoreVesion
+
+//    //Encryption Lib
+//    debugImplementation 'com.ekenya.android.encryptionlib.debug:encryptionlib:'+rootProject.ekenyeEntryptionLibVersion
+//    releaseImplementation'com.ekenya.android:encryptionlib:'+rootProject.ekenyeEntryptionLibVersion
+//    //Validations Lib
+//    debugImplementation 'co.ke.ekenya.lib.validationslib.debug:validationslib:'+rootProject.ekenyaValidationsLibVersion
+//    releaseImplementation 'co.ke.ekenya.lib.validationslib:validationslib:'+rootProject.ekenyaValidationsLibVersion
+//    //Networking Lib
+//    debugImplementation 'co.ke.ekenya.networkLib.networklib.debug:networklib:'+rootProject.ekenyaNetworkLibVersion
+//    releaseImplementation 'co.ke.ekenya.networkLib.networklib:networklib:'+rootProject.ekenyaNetworkLibVersion
+//    //Data Repo Lib
+//    debugImplementation'devops.mobile.datarepolib.debug:datarepolib:'+rootProject.ekenyaDataRepoLibVersion
+//    releaseImplementation 'devops.mobile.datarepolib:datarepolib:'+rootProject.ekenyaDataRepoLibVersion
+//    //Logging Lib
+//    debugImplementation 'ekenya.rnd.logginglibraryImp.logginglib.debug:logginglib:'+rootProject.ekenyaLoggingLibVersion
+//    releaseImplementation 'ekenya.rnd.logginglibraryImp.logginglib:logginglib:'+rootProject.ekenyaLoggingLibVersion
+//
+//    api "com.google.dagger:dagger:" + rootProject.googleDaggerVersion
+//    api "com.google.dagger:dagger-android:" + rootProject.googleDaggerVersion
+//    api "com.google.dagger:dagger-android-support:" + rootProject.googleDaggerVersion
+    //Java
+    annotationProcessor "com.google.dagger:dagger-android-processor:" + rootProject.googleDaggerVersion
+    annotationProcessor "com.google.dagger:dagger-compiler:" + rootProject.googleDaggerVersion
+    //Kotlin
+    kapt 'com.google.dagger:dagger-compiler:' + rootProject.googleDaggerVersion
+    kapt 'com.google.dagger:dagger-android-processor:' + rootProject.googleDaggerVersion
+
+}

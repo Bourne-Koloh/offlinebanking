@@ -1,0 +1,56 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:latest.release"
+    }
+}
+
+Properties properties = new Properties()
+if (project.rootProject.file('dist.properties').exists()) {
+    properties.load(project.rootProject.file('dist.properties').newDataInputStream())
+}
+
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    buildToolsVersion = "30.0.3"
+    supportLibVersion = "1.2.0"
+    navigationUIVersion = "2.3.5"
+    constraintLayoutVersion = "2.0.4"
+    materialVersion="1.4.0"
+    recyclerViewVersion = "1.1.0"
+    testVersion = "1.2.0"
+    espressoVersion = "3.3.0"
+    archLifecycleVersion = "2.0.0"
+    archRoomVersion = "2.0.0-rc01"
+    kotlinLifedataVersion = "2.4.0"
+    //
+    kotlinLifecycleExtVersion = "2.3.0"
+    kotlinCoreVersion = "1.6.0"
+    //
+    googlePlayCoreVesion = "1.9.1"
+    googleSecLibVersion = "1.1.0-alpha03"
+    //
+    googleDaggerVersion = "2.19"
+    //
+    ext.gethVer = '1.8.2'
+    //ekenya Libs
+    ekenyeEntryptionLibVersion = "1.0.2" // Data Encryption Library
+    ekenyaValidationsLibVersion = "1.0" //Input Validations Library
+    ekenyaNetworkLibVersion = "1.0" //Network REqs Library
+    ekenyaDataRepoLibVersion = "1.0" // Data Repository
+    ekenyaLoggingLibVersion = "1.0" //Logging Library
+    ekenyaSecurityLibVersion = "1.0" //Security Library
+    ekenyaDataConversionLibVersion = "1.0" //Data Conversions Library
+}
